@@ -1,0 +1,12 @@
+<div class='login-form'>
+  <div class='title'>Login</div>
+  <form #loginForm="ngForm"  (ngSubmit)='login(loginForm)'>
+    <div class='userName'><input name='userName' ngModel placeholder="username" type="text"/></div>
+    <div class='password'><input name='password' ngModel  placeholder="password" type="password"/></div>
+    <div class='signin'><input type="submit" value='Sign in'></div>
+    <div class='frogot-pw'>Forgot your password? <a routerLink="/recover">Click here!</a> </div>
+  </form>
+  
+</div>
+
+<!-- <div class='route-bg'></div> -->

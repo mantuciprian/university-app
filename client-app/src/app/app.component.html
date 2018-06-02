@@ -1,0 +1,10 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class='background'><img class='bg' src="../assets/background1.jpg" alt=""></div>
+<ul class='nav'> 
+  <li class='nav-item'>Digital University</li>
+  <li id='login' class='nav-item right shown'><a routerLink="/login" routerLinkActive="active">Login</a></li>
+  <li id='register' class='nav-item right shown'><a routerLink="/register" routerLinkActive="active">Register</a></li>
+  <li id='home' class='nav-item right hidden'><a routerLink="/home" routerLinkActive="active">Home</a></li>
+</ul>
+<div [ngStyle]="{'display': showMe ? 'block' : 'none'}" id='bar' class='bar' ></div>
+<router-outlet></router-outlet>
