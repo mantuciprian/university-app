@@ -4,6 +4,7 @@
   <li class='nav-item'>Digital University</li>
   <li id='login' class='nav-item right shown'><a routerLink="/login" routerLinkActive="active">Login</a></li>
   <li id='register' class='nav-item right shown'><a routerLink="/register" routerLinkActive="active">Register</a></li>
+  <li id='logout' (click)='setLogin()' class='nav-item right hidden'><a routerLink="/login" routerLinkActive="active">Logout</a></li>
   <li id='home' class='nav-item right hidden'><a routerLink="/home" routerLinkActive="active">Home</a></li>
 </ul>
 <div [ngStyle]="{'display': showMe ? 'block' : 'none'}" id='bar' class='bar' ></div>

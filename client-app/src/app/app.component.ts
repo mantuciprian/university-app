@@ -32,7 +32,24 @@ export class AppComponent implements OnInit {
       // show the logged it tabs
       document.getElementById('home').classList.remove('hidden');
       document.getElementById('home').classList.add('shown');
+      document.getElementById('logout').classList.remove('hidden');
+      document.getElementById('logout').classList.add('shown');
      }
+   }
+
+   setLogin() {
+     console.log('user logged out');
+     // show the register and login sections
+     document.getElementById('login').classList.add('shown');
+     document.getElementById('login').classList.remove('hidden');
+     document.getElementById('register').classList.add('shown');
+     document.getElementById('register').classList.remove('hidden');
+     // hide the logged it tabs
+     document.getElementById('home').classList.add('hidden');
+     document.getElementById('home').classList.remove('shown');
+     document.getElementById('logout').classList.add('hidden');
+     document.getElementById('logout').classList.remove('shown');
+     this.navbar.logout();
    }
 
 }

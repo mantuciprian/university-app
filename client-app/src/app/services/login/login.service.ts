@@ -23,7 +23,6 @@ export class LoginService {
     headers.append('Content-Type', 'application/json');
     return this._http.put('http://localhost:3000/users/userData', user, {headers: headers})
     .subscribe((response) => {
-      console.log('LOGGED');
       this.user = response;
       this.navbar.connectLoginToService(response);
       this.navbar.connectComps(response);
@@ -35,11 +34,18 @@ export class LoginService {
   getUser() {
     return this.user;
   }
+
+  logOutUser() {
+    this.user = undefined;
+    console.log('logout succeful initialized');
+    return this.user;
+  }
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     if (err) {
       throw err;
     }
    }
+
 
 }

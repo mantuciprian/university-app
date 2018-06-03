@@ -11,17 +11,27 @@ import { NavbarService } from 'src/app/services/navbar/navbar.service';
 export class HomeComponent implements OnInit {
   user: any;
   loginService: any;
+  logout: any;
   constructor(private route: ActivatedRoute, private navbar: NavbarService, private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe((data) => {
       this.loginService = data.login;
       this.user = this.loginService.getUser();
+      this.navbar.handleLogout(this.logout);
+      this.logout = this.loginService.logOutUser();
     }) ;
-    console.log(this.user)
+   // user is the entire object
     if (!this.user) {
       this.router.navigate(['/home']);
     }
   }
+
+  // logout() {
+  //    this.route.data.subscribe((data) =>{
+  //     data.login.loginService.logOutUser();
+  //   })
+  //   console.log('logged out from home')
+  // }
 
 }

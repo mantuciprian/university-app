@@ -11,6 +11,7 @@ export class NavbarService {
   loginFunc: any;
   user: any;
   goHome: any;
+  logout: any;
   constructor(private router: Router) { }
 
   handleNav(navFunction) {
@@ -45,6 +46,10 @@ export class NavbarService {
     if (user) {
       this.goHome();
     }
+  }
+
+  handleLogout(logout) {
+     this.logout = logout;
   }
 
 

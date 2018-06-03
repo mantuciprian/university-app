@@ -16,14 +16,12 @@ export class LoginComponent implements OnInit {
   loginService: any;
   user: any;
   ngOnInit() {
-    // this.compLog = this.route.snapshot.data['login'];
-    // console.log(this.compLog)
     this.route.data.subscribe((data) => {
       this.loginService = data.login;
       this.user = this.loginService.getUser();
       this.navbar.handleHome(this.goToHome);
     }) ;
-    // console.log(this.compLog.loginUser('gigel', 'pass'));
+
   }
 
   login(user) {
@@ -39,7 +37,6 @@ export class LoginComponent implements OnInit {
 
   getUser(user) {
     this.user = user;
-    console.log('get user initialezed from register comp');
     console.log(this.user);
   }
 
