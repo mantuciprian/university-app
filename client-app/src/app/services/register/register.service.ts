@@ -21,7 +21,7 @@ export class RegisterService {
       this.resp = response;
       console.log('regsterde ' + response);
       if (this.resp === userData.userName) {
-        console.log('User ' + response + 'succesful registered!');
+        console.log('User ' + response + ' succesful registered!');
         this.router.navigate(['/login']);
       } else {
         console.log('User could not be registered!');
@@ -30,6 +30,22 @@ export class RegisterService {
     });
   }
 
+  isAvailable(userData) {
+    console.log('Checking avability for user : ' + userData.userName);
+    const headers = new HttpHeaders();
+    const options = {headers: headers, responseType: 'text'};
+    headers.append('Content-Type', 'application/json; charset=utf-8');
+    return this._http.put('http://localhost:3000/users/register/check',  userData, {headers: headers, responseType: 'text'})
+    .subscribe((response) => {
+      if (response === 'false') {
+        console.log('User is already registered!');
+      } else {
+        console.log('User availabe');
+        this.registerUser(userData);
+      }
+      return response;
+    });
+  }
 
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);

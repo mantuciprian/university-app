@@ -103,4 +103,32 @@ router.get('/userData', (req, res)=> {
     
            
       });
+
+
+      router.put('/register/check', (req, res)=> {
+        var body = req.body;
+        console.log('checking avabiliy for ' + body.userName)
+        //    res.send('hello')
+        var sendData = res;
+           const userName = body.userName;
+           if(userName !== '') {
+              const text = 'SELECT username FROM users WHERE username = $1';
+              const values = [userName];
+              client.query(text, values, (err, res) => {
+                console.log('username: ' + res.rows[0]);
+                if(res.rows[0]) {
+                  sendData.send(false);
+                } else {
+                  sendData.send(true);
+                }
+              // sendData.send(res.rows[0]);
+            })
+           } else {
+             throw 'data incorrect'
+           }
+     
+    
+      
+             
+        });
 module.exports = router;
