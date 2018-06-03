@@ -12,12 +12,16 @@ import { LoginService } from 'src/app/services/login/login.service';
 import { LoginResolverService } from 'src/app/resolver/login/login-resolver.service';
 import { NavbarService } from 'src/app/services/navbar/navbar.service';
 import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/register/register.component';
+import { RegisterService } from 'src/app/services/register/register.service';
+// import { RegisterResolverService } from 'src/app/resolver/register/register-resolver.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,7 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     HttpModule
   ],
-  providers: [LoginService, LoginResolverService, NavbarService],
+  providers: [LoginService, LoginResolverService, NavbarService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

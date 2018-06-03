@@ -1,0 +1,24 @@
+
+<div class='login-form'>
+  <div class='title'>Register</div>
+  <form #registerForm="ngForm"  (ngSubmit)='registerUser(registerForm)'>
+    <div class='userName'><input name='userName' ngModel placeholder="username" type="text"/></div>
+    <div class='password'><input name='password' ngModel  placeholder="password" type="password"/></div>
+    <div class='conf-password'><input name='confPassword' ngModel  placeholder="confirm password" type="password"/></div>
+    <div class='firstName'><input name='firstName' ngModel  placeholder="first name" type="text"/></div>
+    <div class='lastName'><input name='lastName' ngModel  placeholder="last name" type="text"/></div>
+    <div class='role'> Role:
+      <select name="role" id="" ngModel placeholder='select your role'>
+        <option value="student">student</option>
+        <option value="student">teacher</option>
+      </select>
+    </div>
+    <div class='recovery'><span>Recovery question:</span>  <input name='recovery' ngModel  placeholder="Type a question" type="text"/></div>
+    <div class='recovery-ans'><span>Recovery answer:</span>  <input name='recoveryAns' ngModel  placeholder="Type a answere" type="text"/></div>
+    <div class='email'><input name='email' ngModel  placeholder="e-mail" type="text"/></div>
+    <div class='conf-email'><input name='confEmail' ngModel  placeholder="confirm e-mail" type="text"/></div>
+    <div class='signin'><input type="submit" value='Register'></div>
+    <div class='frogot-pw'>Already have an account? <a routerLink="/login">Click here!</a> </div>
+  </form>
+  
+</div>

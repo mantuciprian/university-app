@@ -58,4 +58,49 @@ router.get('/userData', (req, res)=> {
          
     });
 
+
+    router.put('/register', (req, res)=> {
+      var body = req.body;
+      var sendData = res;
+      console.log('attepting to register ' + body.userName + ' / ' + body.password + ' / ' + body.firstName + ' / ' + body.lastName + ' / ' 
+      + body.recovery      + ' / ' + body.recoveryAns      + ' / ' + body.role + ' / '  + body.email
+    )
+
+     var userName = body.userName;
+     var password = body.password;
+     var firstName = body.firstName;
+     var lastName  = body.lastName ;
+     var recovery  = body.recovery ;
+     var recoveryAns = body.recoveryAns;
+     var role = body.role;
+     var email = body.email;
+     var authorization = false;
+
+     var checkData = [userName, password, firstName, lastName , recovery, recoveryAns, role, email, authorization];
+
+     var dataCorrect = true;
+
+     checkData.map((v) => v === '' ? dataCorrect = false : dataCorrect);
+     
+     if(dataCorrect) {
+        console.log('data received');
+      
+       
+        const text = 'INSERT INTO users("username", "password", "firstName", "lastName", "recoveryQuestion", "recoveryAnswer", "role" , "email", "authorization") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+        const values = [userName, password, firstName, lastName , recovery, recoveryAns, role, email, authorization];
+        // callback
+        client.query(text, values, (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      console.log(res.rows[0]);
+      sendData.send(res.rows[0].username)
+    }
+  });
+     } else {
+         throw 'data is incomplete!'
+       }
+    
+           
+      });
 module.exports = router;

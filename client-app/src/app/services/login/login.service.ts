@@ -23,6 +23,7 @@ export class LoginService {
     headers.append('Content-Type', 'application/json');
     return this._http.put('http://localhost:3000/users/userData', user, {headers: headers})
     .subscribe((response) => {
+      console.log('LOGGED');
       this.user = response;
       this.navbar.connectLoginToService(response);
       this.navbar.connectComps(response);
